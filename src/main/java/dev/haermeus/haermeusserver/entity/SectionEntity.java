@@ -1,26 +1,15 @@
 package dev.haermeus.haermeusserver.entity;
 
+import lombok.*;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
 public class SectionEntity {
     private Long id;
-    private SectionEntity parent;
-    public String title;
-
-    public SectionEntity(SectionEntity parent) {
-        this.parent = parent;
-    }
-
-    public SectionEntity(SectionEntity parent, String title) {
-        // TODO: вставить создание id FileReference
-        this(parent);
-        this.title = title;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public SectionEntity getParent() {
-        return parent;
-    }
-
+    @ToString.Exclude @EqualsAndHashCode.Exclude private SectionEntity parent;
+    private String title;
 }
