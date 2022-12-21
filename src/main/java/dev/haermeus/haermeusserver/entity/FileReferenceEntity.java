@@ -16,6 +16,8 @@ public class FileReferenceEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "resource_id")
     @ToString.Exclude @EqualsAndHashCode.Exclude private ResourceEntity resource;
     @Column(name = "relative_path")
     private String relativePath;
