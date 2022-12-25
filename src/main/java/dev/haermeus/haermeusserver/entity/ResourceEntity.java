@@ -19,11 +19,16 @@ public class ResourceEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "section_id")
     @ToString.Exclude @EqualsAndHashCode.Exclude private SectionEntity parent;
     @Column(name = "title")
     private String title;
     @Column(name = "content")
     private String content;
+    @OneToMany(fetch = FetchType.LAZY)
     @ToString.Exclude @EqualsAndHashCode.Exclude private List<FileReferenceEntity> files;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cover_file_id")
     @ToString.Exclude @EqualsAndHashCode.Exclude private FileReferenceEntity cover;
 }
