@@ -23,6 +23,8 @@ public class SectionEntity {
     @ToString.Exclude @EqualsAndHashCode.Exclude private SectionEntity parent;
     @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
     private List<SectionEntity> childSections;
+    @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
+    private List<ResourceEntity> resources;
     @Column(name = "title")
     private String title;
 }
