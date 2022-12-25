@@ -12,7 +12,7 @@ import java.util.List;
 @EqualsAndHashCode
 @ToString
 @Entity
-@Table(name = "section")
+@Table(name = "dev.haermeus.haermeusserver.dto.section")
 public class SectionEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
