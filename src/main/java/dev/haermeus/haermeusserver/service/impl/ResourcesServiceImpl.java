@@ -12,6 +12,6 @@ public class ResourcesServiceImpl implements ResourcesService {
     final ResourceRepository resourceRepo;
     @Override
     public PlainResourceDTO getPlainResource(Long id) {
-        return PlainResourceDTO("Hello world", id);;
+        return PlainResourceDTO("Hello world", id);
     }
 }
