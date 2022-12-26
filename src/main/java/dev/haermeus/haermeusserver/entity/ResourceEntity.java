@@ -12,7 +12,7 @@ import java.util.List;
 @EqualsAndHashCode
 @ToString
 @Entity
-@Table(name = "dev.haermeus.haermeusserver.dto.resource")
+@Table(name = "resource")
 public class ResourceEntity {
 
     @Id
