@@ -31,12 +31,4 @@ public class SectionEntity {
     @Column(name = "title")
     private String title;
 
-    public List<PlainSectionDTO> getChildSections() {
-        return childSections.stream().map(x -> new PlainSectionDTO(x.getTitle(), x.getId())).collect(Collectors.toList());
-    }
-
-    public List<PlainResourceDTO> getResources() {
-        return resources.stream().map(x -> new PlainResourceDTO(x.getTitle(), x.getId())).collect(Collectors.toList());
-    }
-
 }

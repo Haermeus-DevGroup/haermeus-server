@@ -18,4 +18,5 @@ public class ResourcesServiceImpl implements ResourcesService {
         ResourceEntity res = resourceRepo.findById(id).orElseThrow();
         return new PlainResourceDTO(res.getTitle(), res.getId());
     }
+
 }
