@@ -1,5 +1,7 @@
 package dev.haermeus.haermeusserver.service.impl;
 
+import dev.haermeus.haermeusserver.dto.resource.PlainResourceDTO;
+import dev.haermeus.haermeusserver.entity.ResourceEntity;
 import dev.haermeus.haermeusserver.repository.ResourceRepository;
 import dev.haermeus.haermeusserver.service.ResourcesService;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +14,9 @@ public class ResourcesServiceImpl implements ResourcesService {
     final ResourceRepository resourceRepo;
     @Override
     public PlainResourceDTO getPlainResource(Long id) {
-        return PlainResourceDTO("Hello world", id);
+        // если ресурса с таким id нет, то выкинется `NoSuchElementException`
+        ResourceEntity res = resourceRepo.findById(id).orElseThrow();
+        // порядок аргументов в конструкторе зависит от реализации
+        return new PlainResourceDTO(res.getId(), res.getTitle());
     }
 }
