@@ -29,21 +29,13 @@ public class SectionsServiceImpl implements SectionsService {
     public List<PlainSectionDTO> getPlainChildrenSections(Long id) {
         // если ресурса с таким id нет, то выкинется `NoSuchElementException`
         SectionEntity section = sectionRepo.findById(id).orElseThrow();
-        return this.getChildSections(section);
+        return section.getChildSections().stream().map(x -> new PlainSectionDTO(x.getTitle(), x.getId())).collect(Collectors.toList());
     }
 
     @Override
     public List<PlainResourceDTO> getPlainChildrenResources(Long id) {
         // если ресурса с таким id нет, то выкинется `NoSuchElementException`
         SectionEntity section = sectionRepo.findById(id).orElseThrow();
-        return this.getResources(section);
-    }
-
-    public List<PlainSectionDTO> getChildSections(SectionEntity section) {
-        return section.getChildSections().stream().map(x -> new PlainSectionDTO(x.getTitle(), x.getId())).collect(Collectors.toList());
-    }
-
-    public List<PlainResourceDTO> getResources(SectionEntity section) {
         return section.getResources().stream().map(x -> new PlainResourceDTO(x.getTitle(), x.getId())).collect(Collectors.toList());
     }
 
