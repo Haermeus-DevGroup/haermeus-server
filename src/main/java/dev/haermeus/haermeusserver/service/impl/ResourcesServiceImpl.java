@@ -17,6 +17,6 @@ public class ResourcesServiceImpl implements ResourcesService {
         // если ресурса с таким id нет, то выкинется `NoSuchElementException`
         ResourceEntity res = resourceRepo.findById(id).orElseThrow();
         // порядок аргументов в конструкторе зависит от реализации
-        return new PlainResourceDTO(res.getId(), res.getTitle());
+        return new PlainResourceDTO(res.getTitle(), res.getId());
     }
 }
