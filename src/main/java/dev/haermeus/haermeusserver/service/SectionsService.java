@@ -5,7 +5,7 @@ import dev.haermeus.haermeusserver.dto.section.PlainSectionDTO;
 
 import java.util.List;
 
-public interface SectionService {
+public interface SectionsService {
 
     PlainSectionDTO getPlainSection(Long id);
     List<PlainSectionDTO> getPlainChildrenSections(Long id);

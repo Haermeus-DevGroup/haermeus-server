@@ -5,16 +5,15 @@ import dev.haermeus.haermeusserver.dto.section.PlainSectionDTO;
 import dev.haermeus.haermeusserver.entity.SectionEntity;
 import dev.haermeus.haermeusserver.repository.ResourceRepository;
 import dev.haermeus.haermeusserver.repository.SectionRepository;
-import dev.haermeus.haermeusserver.service.SectionService;
+import dev.haermeus.haermeusserver.service.SectionsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class SectionsServiceImpl implements SectionService {
+public class SectionsServiceImpl implements SectionsService {
 
     final SectionRepository sectionRepo;
     final ResourceRepository resourceRepo;
@@ -36,6 +35,6 @@ public class SectionsServiceImpl implements SectionService {
     public List<PlainResourceDTO> getPlainChildrenResources(Long id) {
         // если ресурса с таким id нет, то выкинется `NoSuchElementException`
         SectionEntity section = sectionRepo.findById(id).orElseThrow();
-        return section.getResources(); 
+        return section.getResources();
     }
 }
