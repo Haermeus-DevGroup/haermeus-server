@@ -1,9 +1,12 @@
 package dev.haermeus.haermeusserver.entity;
 
+import dev.haermeus.haermeusserver.dto.resource.PlainResourceDTO;
+import dev.haermeus.haermeusserver.dto.section.PlainSectionDTO;
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -27,4 +30,5 @@ public class SectionEntity {
     private List<ResourceEntity> resources;
     @Column(name = "title")
     private String title;
+
 }
