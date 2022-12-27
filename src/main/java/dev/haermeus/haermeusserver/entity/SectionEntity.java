@@ -1,9 +1,12 @@
 package dev.haermeus.haermeusserver.entity;
 
+import dev.haermeus.haermeusserver.dto.resource.PlainResourceDTO;
+import dev.haermeus.haermeusserver.dto.section.PlainSectionDTO;
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -27,4 +30,13 @@ public class SectionEntity {
     private List<ResourceEntity> resources;
     @Column(name = "title")
     private String title;
+
+    public List<PlainSectionDTO> getChildSections() {
+        return childSections.stream().map(x -> new PlainSectionDTO(x.getTitle(), x.getId())).collect(Collectors.toList());
+    }
+
+    public List<PlainResourceDTO> getResources() {
+        return resources.stream().map(x -> new PlainResourceDTO(x.getTitle(), x.getId())).collect(Collectors.toList());
+    }
+
 }
