@@ -39,4 +39,10 @@ public class SectionsServiceImpl implements SectionsService {
         return section.getResources().stream().map(x -> new PlainResourceDTO(x.getTitle(), x.getId())).collect(Collectors.toList());
     }
 
+    @Override
+    public List<PlainSectionDTO> getPlainRootSections() {
+        List<SectionEntity> rootSections = sectionRepo.getAllByParentIsNull();
+        return rootSections.stream().map(x -> new PlainSectionDTO(x.getTitle(), x.getId())).collect(Collectors.toList());
+    }
+
 }
