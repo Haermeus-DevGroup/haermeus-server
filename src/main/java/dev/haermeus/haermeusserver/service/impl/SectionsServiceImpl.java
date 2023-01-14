@@ -23,7 +23,7 @@ public class SectionsServiceImpl implements SectionsService {
         SectionEntity section = sectionRepo.findById(id).orElseThrow();
         return new PlainSectionDTO(
                 section.getId(),
-                Optional.ofNullable(section.getParent()).map(SectionEntity::getId).orElse(null),
+                Optional.ofNullable(section.getParent()).map(SectionEntity::getId).orElse(-1L),
                 section.getTitle());
     }
 
@@ -34,7 +34,7 @@ public class SectionsServiceImpl implements SectionsService {
         return section.getChildSections().stream()
                 .map(x -> new PlainSectionDTO(
                         x.getId(),
-                        Optional.ofNullable(x.getParent()).map(SectionEntity::getId).orElse(null),
+                        Optional.ofNullable(x.getParent()).map(SectionEntity::getId).orElse(-1L),
                         x.getTitle()))
                 .toList();
     }
@@ -46,7 +46,7 @@ public class SectionsServiceImpl implements SectionsService {
         return section.getResources().stream()
                 .map(x -> new PlainResourceDTO(
                         x.getId(),
-                        Optional.ofNullable(x.getParent()).map(SectionEntity::getId).orElse(null),
+                        Optional.ofNullable(x.getParent()).map(SectionEntity::getId).orElse(-1L),
                         x.getTitle()))
                 .toList();
     }
@@ -57,7 +57,7 @@ public class SectionsServiceImpl implements SectionsService {
         return rootSections.stream()
                 .map(x -> new PlainSectionDTO(
                         x.getId(),
-                        Optional.ofNullable(x.getParent()).map(SectionEntity::getId).orElse(null),
+                        Optional.ofNullable(x.getParent()).map(SectionEntity::getId).orElse(-1L),
                         x.getTitle()))
                 .toList();
     }

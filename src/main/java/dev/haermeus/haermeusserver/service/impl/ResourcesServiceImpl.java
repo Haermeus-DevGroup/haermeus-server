@@ -21,7 +21,7 @@ public class ResourcesServiceImpl implements ResourcesService {
         ResourceEntity res = resourceRepo.findById(id).orElseThrow();
         return new PlainResourceDTO(
                 res.getId(),
-                Optional.ofNullable(res.getParent()).map(SectionEntity::getId).orElse(null),
+                Optional.ofNullable(res.getParent()).map(SectionEntity::getId).orElse(-1L),
                 res.getTitle());
     }
 
@@ -30,7 +30,7 @@ public class ResourcesServiceImpl implements ResourcesService {
         return resourceRepo.findById(id)
                 .map(res -> new FullResourceDTO(
                         res.getId(),
-                        Optional.ofNullable(res.getParent()).map(SectionEntity::getId).orElse(null),
+                        Optional.ofNullable(res.getParent()).map(SectionEntity::getId).orElse(-1L),
                         res.getTitle(),
                         res.getContent()
                 ))
