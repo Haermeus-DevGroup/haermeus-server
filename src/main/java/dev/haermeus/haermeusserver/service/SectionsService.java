@@ -10,7 +10,6 @@ public interface SectionsService {
     PlainSectionDTO getPlainSection(Long id);
     List<PlainSectionDTO> getPlainChildrenSections(Long id);
     List<PlainResourceDTO> getPlainChildrenResources(Long id);
-
-
+    List<PlainSectionDTO> getPlainRootSections();
 
 }

@@ -33,4 +33,9 @@ public class SectionsController {
     List<PlainResourceDTO> getChildrenResourcesOfSectionById(@RequestParam Long id) {
         return sectionsService.getPlainChildrenResources(id);
     }
+
+    @GetMapping("/roots")
+    List<PlainSectionDTO> getRootSections() {
+        return sectionsService.getPlainRootSections();
+    }
 }
