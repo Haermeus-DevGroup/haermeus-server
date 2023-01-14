@@ -7,10 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PlainResourceDTO {
+public class FullResourceDTO {
 
     private Long id;
     private Long parentId;
     private String title;
-
+    private String content;
 }

@@ -1,9 +1,9 @@
 package dev.haermeus.haermeusserver.controllers;
 
 
+import dev.haermeus.haermeusserver.dto.resource.FullResourceDTO;
 import dev.haermeus.haermeusserver.dto.resource.PlainResourceDTO;
 import dev.haermeus.haermeusserver.service.ResourcesService;
-import dev.haermeus.haermeusserver.service.SectionsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,4 +22,8 @@ public class ResourcesController {
         return resourcesService.getPlainResource(id);
     }
 
+    @GetMapping("/full")
+    FullResourceDTO getFullResourceById(@RequestParam Long id) {
+        return resourcesService.getFullResource(id);
+    }
 }
