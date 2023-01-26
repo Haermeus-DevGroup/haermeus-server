@@ -1,0 +1,77 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0
+      author: yawkar
+      changes:
+        - insert:
+            tableName: section
+            columns:
+              - column:
+                  name: title
+                  value: "О боте"
+        - insert:
+            tableName: section
+            columns:
+              - column:
+                  name: title
+                  value: "Цели бота"
+              - column:
+                  name: parent_section_id
+                  value: "1"
+        - insert:
+            tableName: section
+            columns:
+              - column:
+                  name: title
+                  value: "Разработчики"
+              - column:
+                  name: parent_section_id
+                  value: "1"
+        - insert:
+            tableName: section
+            columns:
+              - column:
+                  name: title
+                  value: "Алгоритмы и Структуры Данных"
+        - insert:
+            tableName: section
+            columns:
+              - column:
+                  name: title
+                  value: "Общее"
+              - column:
+                  name: parent_section_id
+                  value: "4"
+        - insert:
+            tableName: section
+            columns:
+              - column:
+                  name: title
+                  value: "Языки программирования"
+        - insert:
+            tableName: section
+            columns:
+              - column:
+                  name: title
+                  value: "Java"
+              - column:
+                  name: parent_section_id
+                  value: "6"
+        - insert:
+            tableName: section
+            columns:
+              - column:
+                  name: title
+                  value: "C++"
+              - column:
+                  name: parent_section_id
+                  value: "6"
+        - insert:
+            tableName: section
+            columns:
+              - column:
+                  name: title
+                  value: "Rust"
+              - column:
+                  name: parent_section_id
+                  value: "6"

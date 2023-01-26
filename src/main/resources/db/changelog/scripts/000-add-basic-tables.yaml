@@ -1,0 +1,111 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: yawkar
+      changes:
+        - createTable:
+            tableName: file_reference
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: relative_path
+                  type: varchar(255)
+              - column:
+                  name: resource_id
+                  type: bigint
+        - createTable:
+            tableName: resource
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: content
+                  type: varchar(2047)
+              - column:
+                  name: title
+                  type: varchar(255)
+              - column:
+                  name: cover_file_id
+                  type: bigint
+              - column:
+                  name: section_id
+                  type: bigint
+        - createTable:
+            tableName: resource_files
+            columns:
+              - column:
+                  name: resource_entity_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: files_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: section
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: title
+                  type: varchar(255)
+              - column:
+                  name: parent_section_id
+                  type: bigint
+        - addUniqueConstraint:
+            tableName: resource_files
+            columnNames: files_id
+        - addForeignKeyConstraint:
+            baseTableName: file_reference
+            referencedTableName: resource
+            baseColumnNames: resource_id
+            referencedColumnNames: id
+            constraintName: fk_file_to_resource
+        - addForeignKeyConstraint:
+            baseTableName: resource
+            referencedTableName: file_reference
+            baseColumnNames: cover_file_id
+            referencedColumnNames: id
+            constraintName: fk_resource_to_cover_file
+        - addForeignKeyConstraint:
+            baseTableName: resource
+            referencedTableName: section
+            baseColumnNames: section_id
+            referencedColumnNames: id
+            constraintName: fk_resource_to_section
+        - addForeignKeyConstraint:
+            baseTableName: resource_files
+            referencedTableName: file_reference
+            baseColumnNames: files_id
+            referencedColumnNames: id
+            constraintName: fk_from_mtm_to_file
+        - addForeignKeyConstraint:
+            baseTableName: resource_files
+            referencedTableName: resource
+            baseColumnNames: resource_entity_id
+            referencedColumnNames: id
+            constraintName: fk_from_mtm_to_resource
+        - addForeignKeyConstraint:
+            baseTableName: section
+            referencedTableName: section
+            baseColumnNames: parent_section_id
+            referencedColumnNames: id
+            constraintName: fk_tree_structure_of_sections

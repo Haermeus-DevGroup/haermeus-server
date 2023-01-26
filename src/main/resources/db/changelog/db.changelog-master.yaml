@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/scripts/000-add-basic-tables.yaml
+  - include:
+      file: db/changelog/scripts/001-add-templated-sections.yaml
+  - include:
+      file: db/changelog/scripts/002-add-templated-resources.yaml
